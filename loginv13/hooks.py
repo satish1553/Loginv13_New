@@ -8,17 +8,33 @@ app_icon = "octicon octicon-file-directory"
 app_color = "grey"
 app_email = "satish@gmail.com"
 app_license = "MIT"
+app_logo_url = '/assets/loginv13/images/capovex_logo.png'
 
 # Includes in <head>
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/loginv13/css/loginv13.css"
-# app_include_js = "/assets/loginv13/js/loginv13.js"
+app_include_css = "/assets/loginv13/css/loginv13.css",
+"/assets/loginv13/css/navbar.css",
+"/assets/loginv13/css/login.css",
+"/assets/loginv13/scss/login.scss",
+
+app_include_js = "/assets/loginv13/js/loginv13.js"
+
 
 # include js, css files in header of web template
-# web_include_css = "/assets/loginv13/css/loginv13.css"
-# web_include_js = "/assets/loginv13/js/loginv13.js"
+web_include_css = "/assets/loginv13/css/loginv13.css"
+"/assets/loginv13/css/navbar.css",
+"/assets/loginv13/css/login.css",
+"/assets/loginv13/scss/login.scss"
+
+web_include_js = "/assets/loginv13/js/loginv13.js"
+
+
+# website_context = {
+#     "favicon":     "/assets/loginv13/images/capovex_logo.png",
+#     "splash_image": "/assets/loginv13/images/capovex_logo.png"
+# }
 
 # include custom scss in every website theme (without file extension ".scss")
 # website_theme_scss = "loginv13/public/scss/website"

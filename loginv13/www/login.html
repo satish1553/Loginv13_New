@@ -1,0 +1,112 @@
+{% extends "templates/web.html" %}
+
+{% macro email_login_body() -%}
+
+<style>
+	body {
+	  background-image: url('assets/loginv13/images/pexels.jpg');
+	  background-repeat: no-repeat;
+	  background-attachment: fixed;
+  	  background-position: center; 
+	}
+	
+</style>
+
+<div class="page-card-body">
+	<div class="form-group">
+		<label class="form-label sr-only" for="login_email">{{ login_label or _("Email")}}</label>
+		<div class="email-field">
+			<input type="text" id="login_email" class="form-control"
+				placeholder="{% if login_name_placeholder %}{{ login_name_placeholder  }}{% else %}{{ _('UserName') }}{% endif %}"
+				required autofocus>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="form-label sr-only" for="login_password">{{ _("Password") }}</label>
+		<div class="password-field">
+			<input type="password" id="login_password" class="form-control" placeholder="Password"
+				autocomplete="current-password" required>
+			<span toggle="#login_password" class="toggle-password text-muted">{{ _('Show') }}</span>
+		</div>
+	</div>
+
+	</div>
+
+<div class="page-card-actions d-flex justify-content-center" style="margin-bottom: 100px;">
+    <button class="btn btn-sm btn-primary btn-block btn-login" type="submit" style="width: fit-content;padding-left: 2rem;padding-right: 2rem;border-radius: 20px;">
+        {{ _("Login") }}</button>
+
+
+
+    {% if ldap_settings and ldap_settings.enabled %}
+    <button class="btn btn-sm btn-default btn-block btn-login btn-ldap-login">
+        {{ _("Login with LDAP") }}</button>
+    {% endif %}
+</div>
+{% endmacro %}
+
+{% block head_include %}
+<link type="text/css" rel="stylesheet" href="/assets/css/login.css?ver={{ build_version }}">
+{% endblock %}
+
+{% macro logo_section() %}
+<div class="page-card-head">
+    <img class="logo" src="/assets/loginv13/images/capovex_logo.png">
+    <p style="color:DodgerBlack;">Welcome To Capovex</p>
+
+    
+</div>
+{% endmacro %}
+
+{% block page_content %}
+<!-- {{ for_test }} -->
+<div>
+	<noscript>
+		<div class="text-center my-5">
+			<h4>{{ _("Javascript is disabled on your browser") }}</h4>
+			<p class="text-muted">
+				{{ _("You need to enable JavaScript for your app to work.") }}<br>{{ _("To enable it follow the instructions in the following link: {0}").format("<a href='https://enable-javascript.com/'>enable-javascript.com</a></p>") }}
+		</div>
+	</noscript>
+	<section class='for-login'>
+		<div class="login-content page-card">
+			{{ logo_section() }}
+			<form class="form-signin form-login" role="form">
+				{%- if social_login -%}
+				<div class="page-card-body">
+					<div class="social-logins text-center">
+						<div class="social-login-buttons">
+							{% for provider in provider_logins %}
+							<div class="login-button-wrapper">
+								<a href="{{ provider.auth_url }}"
+									class="btn btn-block btn-default btn-sm btn-login-option btn-{{ provider.name }}">
+									{% if provider.icon %}
+										{{ provider.icon }}
+									{% endif %}
+									{{ _("Login With {0}").format(provider.provider_name) }}</a>
+							</div>
+							{% endfor %}
+							<p class="text-muted login-divider">{{ _("or") }}</p>
+						</div>
+					</div>
+					<a href="#email"
+						class="btn btn-block btn-default btn-sm btn-login-option">
+					 {{ _("Login With Email") }}</a>
+				</div>
+				{% else %}
+					{{ email_login_body() }}
+				{%- endif -%}
+			</form>
+		</div>
+		{%- if not disable_signup -%}
+		{%- endif -%}
+	</section>
+	</div>
+{% endblock %}
+
+{% block script %}
+<script>{% include "templates/includes/login/login.js" %}</script>
+{% endblock %}
+
+{% block sidebar %}{% endblock %}
