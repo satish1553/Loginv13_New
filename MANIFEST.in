@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include loginv13 *.css
+recursive-include loginv13 *.csv
+recursive-include loginv13 *.html
+recursive-include loginv13 *.ico
+recursive-include loginv13 *.js
+recursive-include loginv13 *.json
+recursive-include loginv13 *.md
+recursive-include loginv13 *.png
+recursive-include loginv13 *.py
+recursive-include loginv13 *.svg
+recursive-include loginv13 *.txt
+recursive-exclude loginv13 *.pyc
