@@ -8,7 +8,6 @@ app_icon = "octicon octicon-file-directory"
 app_color = "grey"
 app_email = "satish@gmail.com"
 app_license = "MIT"
-app_logo_url = '/assets/loginv13/images/capovex_logo.png'
 
 # Includes in <head>
 # ------------------
@@ -30,6 +29,10 @@ web_include_css = "/assets/loginv13/css/loginv13.css"
 
 web_include_js = "/assets/loginv13/js/loginv13.js"
 
+
+website_context = {
+	"favicon": 	"/assets/loginv13/images/capovex_logo.png",
+}
 
 # website_context = {
 #     "favicon":     "/assets/loginv13/images/capovex_logo.png",
